@@ -1,0 +1,35 @@
+{
+	"schemaVersion": 1,
+	"id": "miumaupiupau",
+	"version": "${version}",
+	"name": "MiuMauPiuPau",
+	"description": "Experience ᓚ₍^. .^₎ in your Minecraft chat!",
+	"authors": [
+		"UninenVille",
+		"Cnxt"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/miumaupiupau",
+		"issues": "https://github.com/UninenVille/MiuMauPiuPau/issues"
+	},
+	"license": "WTFPL",
+	"icon": "assets/miumaupiupau/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"main": [
+			"uninenville.miumaupiupau.MiuMauPiuPau"
+		],
+		"modmenu": [
+			"uninenville.miumaupiupau.config.ModMenuIntegration"
+		]
+	},
+	"depends": {
+		"minecraft": ">=1.21.4",
+		"fabricloader": "*",
+		"fabric-api": "*",
+		"duck-tape": "*"
+	},
+	"suggests": {
+		"yet_another_config_lib_v3": "*"
+	}
+}

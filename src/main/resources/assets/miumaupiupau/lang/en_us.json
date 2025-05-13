@@ -1,0 +1,15 @@
+{
+  "miumaupiupau.config.title": "MiuMauPiuPau",
+  "miumaupiupau.config.prefix": "Miumau message prefix",
+  "miumaupiupau.config.prefix.description": "When starting message with this prefix the message will be miumau'd\n\nPro tip: set this to empty and all your messages will be miumau'd",
+  "miumaupiupau.config.chance": "Chance of miumau",
+  "miumaupiupau.config.chance.description": "Chance of random miumau appearing in your chat message after each word",
+  "miumaupiupau.config.duplicate_words": "Duplicate miumaus",
+  "miumaupiupau.config.duplicate_words.description": "Allow duplicate miumaus on the same message",
+  "miumaupiupau.config.commandwhitelist": "Command whitelist",
+  "miumaupiupau.config.commandwhitelist.description": "Regex patterns of commands that get miumau'd if argument after the pattern match starts with the message prefix",
+  "miumaupiupau.config.words": "Words",
+  "miumaupiupau.config.words.description": "All your miumaus! Random ones will be selected from this list",
+  "category.miumaupiupau": "MiuMauPiuPau",
+  "key.miumaupiupau.miumaupiupau": "Send random 🐈 to chat"
+}
