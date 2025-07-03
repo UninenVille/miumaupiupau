@@ -9,11 +9,11 @@ public class Config extends AbstractConfig {
     int chance = 50;
     boolean duplicateWords = false;
     List<String> commandWhitelist = List.of(
-        "^msg [a-zA-Z0-9_]{2,16} ", "^tell [a-zA-Z0-9_]{2,16} ", "^w [a-zA-Z0-9_]{2,16} ", "^reply ", "^r ", "^me "
+        "^(msg|tell|w) [a-zA-Z0-9_]{2,16} ", "^(reply|r) ", "^me ", "^(partychat|pc)"
     );
     List<String> words = List.of(
         "miumaupiupau", "miumau", "miu", "mau", "meow", "purr",
-        "ᓚ₍^. .^₎", "₍^. .^₎ᓗ", "⟅₍^. .^₎", "₍^. .^₎⟆", "ᓚᕠᗢ", "ᗢᕡᓗ",
+        "ᓚ₍^. .^₎", "₍^. .^₎ᓗ", "⟅₍^. .^₎", "₍^. .^₎⟆", "ᓚᕠᗢ", "ᗢᕡᓗ", "🐈",
         "ʕ•ᴥ•ʔ", "kvaak", ":3"
     );
 
