@@ -14,7 +14,7 @@ import static uninenville.miumaupiupau.MiuMauPiuPau.CONFIG;
 
 public class MiuMauPiuPauKeybinding extends ModKeyBinding {
 
-    public MiuMauPiuPauKeybinding(Identifier id, int code, String category) {
+    public MiuMauPiuPauKeybinding(Identifier id, int code, Category category) {
         super(id, code, category);
     }
 

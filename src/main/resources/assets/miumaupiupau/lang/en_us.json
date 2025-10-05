@@ -10,6 +10,6 @@
   "miumaupiupau.config.commandwhitelist.description": "Regex patterns of commands that get miumau'd if argument after the pattern match starts with the message prefix",
   "miumaupiupau.config.words": "Words",
   "miumaupiupau.config.words.description": "All your miumaus! Random ones will be selected from this list",
-  "category.miumaupiupau": "MiuMauPiuPau",
+  "key.category.miumaupiupau.miumaupiupau": "MiuMauPiuPau",
   "key.miumaupiupau.miumaupiupau": "Send random 🐈 to chat"
 }

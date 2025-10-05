@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.random.Random;
@@ -32,7 +33,7 @@ public class MiuMauPiuPau implements ModInitializer {
         LOGGER.info("Hello Itäkeskus and ᓚ₍^. .^₎ wörld!");
         ClientSendMessageEvents.MODIFY_CHAT.register(MiuMauPiuPau::modifyChatMessage);
         ClientSendMessageEvents.MODIFY_COMMAND.register(MiuMauPiuPau::modifyCommandMessage);
-        KeyBindingHelper.registerKeyBinding(new MiuMauPiuPauKeybinding(id(MOD_ID), GLFW.GLFW_KEY_UNKNOWN, "category." + MOD_ID));
+        KeyBindingHelper.registerKeyBinding(new MiuMauPiuPauKeybinding(id(MOD_ID), GLFW.GLFW_KEY_UNKNOWN, KeyBinding.Category.create(id(MOD_ID))));
     }
 
     private static String modifyChatMessage(String message) {
