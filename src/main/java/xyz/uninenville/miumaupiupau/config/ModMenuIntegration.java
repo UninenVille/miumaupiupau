@@ -1,9 +1,9 @@
-package uninenville.miumaupiupau.config;
+package xyz.uninenville.miumaupiupau.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;
 import net.fabricmc.loader.api.FabricLoader;
-import uninenville.ducktape.api.config.InstallYaclScreen;
+import xyz.uninenville.ducktape.api.config.InstallYaclScreen;
 
 public class ModMenuIntegration implements ModMenuApi {
     @Override
