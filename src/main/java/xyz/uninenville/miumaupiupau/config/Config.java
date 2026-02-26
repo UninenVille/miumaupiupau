@@ -12,7 +12,7 @@ public class Config {
     private List<String> words = List.of(
         "miumaupiupau", "miumau", "miu", "mau", "meow", "purr",
         "ᓚ₍^. .^₎", "₍^. .^₎ᓗ", "⟅₍^. .^₎", "₍^. .^₎⟆", "ᓚᕠᗢ", "ᗢᕡᓗ", "🐈",
-        "ʕ•ᴥ•ʔ", "kvaak", ":3"
+        "ʕ•ᴥ•ʔ", "kvaak", ":3", "mäy", "૮₍˶• ༝ •˶₎ა", "ᓚ₍⑅^- .-^₎ -ᶻ 𝗓 𐰁"
     );
 
     public String prefix() {
