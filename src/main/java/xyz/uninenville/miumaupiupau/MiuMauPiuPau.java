@@ -2,8 +2,12 @@ package xyz.uninenville.miumaupiupau;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringHelper;
 import net.minecraft.util.math.random.Random;
@@ -31,6 +35,8 @@ public class MiuMauPiuPau implements ModInitializer {
         LOGGER.info("Hello Itäkeskus and ᓚ₍^. .^₎ wörld!");
         ClientSendMessageEvents.MODIFY_CHAT.register(MiuMauPiuPau::modifyChatMessage);
         ClientSendMessageEvents.MODIFY_COMMAND.register(MiuMauPiuPau::modifyCommandMessage);
+        ClientReceiveMessageEvents.CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> MiuMauPiuPau.onChat(message.getString()));
+        ClientReceiveMessageEvents.GAME.register((message, overlay) -> MiuMauPiuPau.onChat(message.getString()));
         KeyBindingHelper.registerKeyBinding(new MiuMauPiuPauKeybinding());
     }
 
@@ -66,6 +72,22 @@ public class MiuMauPiuPau implements ModInitializer {
         }
 
         return message;
+    }
+
+    private static void onChat(String message) {
+        Config config = MiuMauPiuPau.getConfig();
+
+        if (config.catSoundsOnMeowsInChat()) {
+            for (String word : config.words()) {
+                if (message.contains(word)) {
+                    ClientPlayerEntity player = MinecraftClient.getInstance().player;
+                    if (player != null) {
+                        player.playSound(SoundEvent.of(Identifier.of(config.catSound())), config.catSoundVolume(), 1F);
+                    }
+                    break;
+                }
+            }
+        }
     }
 
     private static String modifyCommandMessage(String command) {

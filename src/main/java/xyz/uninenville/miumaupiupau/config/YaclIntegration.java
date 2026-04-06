@@ -1,6 +1,7 @@
 package xyz.uninenville.miumaupiupau.config;
 
 import dev.isxander.yacl3.api.*;
+import dev.isxander.yacl3.api.controller.FloatSliderControllerBuilder;
 import dev.isxander.yacl3.api.controller.IntegerSliderControllerBuilder;
 import dev.isxander.yacl3.api.controller.StringControllerBuilder;
 import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
@@ -36,6 +37,24 @@ public class YaclIntegration {
                     .description(OptionDescription.of(Text.translatable("miumaupiupau.config.duplicate_words.description")))
                     .binding(defaultConfig.allowDuplicateWords(), config::allowDuplicateWords, config::setAllowDuplicateWords)
                     .controller(TickBoxControllerBuilder::create)
+                    .build()
+                )
+                .option(Option.<Boolean>createBuilder()
+                    .name(Text.translatable("miumaupiupau.config.cat_sounds_on_meows_in_chat"))
+                    .binding(defaultConfig.catSoundsOnMeowsInChat(), config::catSoundsOnMeowsInChat, config::setCatSoundsOnMeowsInChat)
+                    .controller(TickBoxControllerBuilder::create)
+                    .build()
+                )
+                .option(Option.<Float>createBuilder()
+                    .name(Text.translatable("miumaupiupau.config.cat_sound_volume"))
+                    .binding(defaultConfig.catSoundVolume(), config::catSoundVolume, config::setCatSoundVolume)
+                    .controller(opt -> FloatSliderControllerBuilder.create(opt).range(0F, 1F).step(0.05F))
+                    .build()
+                )
+                .option(Option.<String>createBuilder()
+                    .name(Text.translatable("miumaupiupau.config.cat_sound"))
+                    .binding(defaultConfig.catSound(), config::catSound, config::setCatSound)
+                    .controller(StringControllerBuilder::create)
                     .build()
                 )
                 .group(ListOption.<String>createBuilder()

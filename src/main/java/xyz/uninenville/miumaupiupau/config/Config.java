@@ -1,5 +1,7 @@
 package xyz.uninenville.miumaupiupau.config;
 
+import net.minecraft.sound.SoundEvents;
+
 import java.util.List;
 
 public class Config {
@@ -14,6 +16,9 @@ public class Config {
         "ᓚ₍^. .^₎", "₍^. .^₎ᓗ", "⟅₍^. .^₎", "₍^. .^₎⟆", "ᓚᕠᗢ", "ᗢᕡᓗ", "🐈",
         "ʕ•ᴥ•ʔ", "kvaak", ":3", "mäy", "૮₍˶• ༝ •˶₎ა", "ᓚ₍⑅^- .-^₎ -ᶻ 𝗓 𐰁"
     );
+    private boolean catSoundsOnMeowsInChat = true;
+    private float catSoundVolume = 0.5F;
+    private String catSound = SoundEvents.ENTITY_CAT_AMBIENT.id().toString();
 
     public String prefix() {
         return prefix;
@@ -53,5 +58,29 @@ public class Config {
 
     public void setWords(List<String> words) {
         this.words = words;
+    }
+
+    public boolean catSoundsOnMeowsInChat() {
+        return catSoundsOnMeowsInChat;
+    }
+
+    public void setCatSoundsOnMeowsInChat(boolean catSoundsOnMeowsInChat) {
+        this.catSoundsOnMeowsInChat = catSoundsOnMeowsInChat;
+    }
+
+    public float catSoundVolume() {
+        return catSoundVolume;
+    }
+
+    public void setCatSoundVolume(float soundVolume) {
+        this.catSoundVolume = soundVolume;
+    }
+
+    public String catSound() {
+        return catSound;
+    }
+
+    public void setCatSound(String catSound) {
+        this.catSound = catSound;
     }
 }
