@@ -1,6 +1,7 @@
 package xyz.uninenville.miumaupiupau.config;
 
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.animal.feline.CatSoundVariants;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Config {
     );
     private boolean catSoundsOnMeowsInChat = true;
     private float catSoundVolume = 0.5F;
-    private String catSound = SoundEvents.ENTITY_CAT_AMBIENT.id().toString();
+    private String catSound = SoundEvents.CAT_SOUNDS.get(CatSoundVariants.SoundSet.CLASSIC).adultSounds().ambientSound().value().location().toString();
 
     public String prefix() {
         return prefix;

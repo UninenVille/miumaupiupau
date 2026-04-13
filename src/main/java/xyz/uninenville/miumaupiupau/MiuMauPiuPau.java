@@ -1,22 +1,22 @@
 package xyz.uninenville.miumaupiupau;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.StringHelper;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.resources.Identifier;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import xyz.uninenville.ducktape.api.config.ConfigHolder;
 import xyz.uninenville.miumaupiupau.config.Config;
-import xyz.uninenville.miumaupiupau.keybinding.MiuMauPiuPauKeybinding;
+import xyz.uninenville.miumaupiupau.keymapping.MiuMauPiuPauKeyMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,14 +37,14 @@ public class MiuMauPiuPau implements ModInitializer {
         ClientSendMessageEvents.MODIFY_COMMAND.register(MiuMauPiuPau::modifyCommandMessage);
         ClientReceiveMessageEvents.CHAT.register((message, signedMessage, sender, params, receptionTimestamp) -> MiuMauPiuPau.onChat(message.getString()));
         ClientReceiveMessageEvents.GAME.register((message, overlay) -> MiuMauPiuPau.onChat(message.getString()));
-        KeyBindingHelper.registerKeyBinding(new MiuMauPiuPauKeybinding());
+        KeyMappingHelper.registerKeyMapping(new MiuMauPiuPauKeyMapping());
     }
 
     private static String modifyChatMessage(String message) {
         Config config = MiuMauPiuPau.getConfig();
 
         if (config.prefix().isEmpty() || message.startsWith(config.prefix())) {
-            Random random = Random.create();
+            RandomSource random = RandomSource.create();
             List<String> words = new ArrayList<>(config.words());
             message = message.substring(config.prefix().length());
 
@@ -68,7 +68,7 @@ public class MiuMauPiuPau implements ModInitializer {
                 }
             }
 
-            return StringHelper.truncateChat(StringUtils.normalizeSpace(newMessage.toString().trim()));
+            return StringUtil.trimChatMessage(StringUtils.normalizeSpace(newMessage.toString().trim()));
         }
 
         return message;
@@ -80,9 +80,9 @@ public class MiuMauPiuPau implements ModInitializer {
         if (config.catSoundsOnMeowsInChat()) {
             for (String word : config.words()) {
                 if (message.contains(word)) {
-                    ClientPlayerEntity player = MinecraftClient.getInstance().player;
+                    LocalPlayer player = Minecraft.getInstance().player;
                     if (player != null) {
-                        player.playSound(SoundEvent.of(Identifier.of(config.catSound())), config.catSoundVolume(), 1F);
+                        player.playSound(SoundEvent.createVariableRangeEvent(Identifier.parse(config.catSound())), config.catSoundVolume(), 1F);
                     }
                     break;
                 }
@@ -115,10 +115,10 @@ public class MiuMauPiuPau implements ModInitializer {
     }
 
     public static Config getConfig() {
-        return (Config) CONFIG_HOLDER.getConfig();
+        return CONFIG_HOLDER.getConfig();
     }
 
     public static Identifier id(String path) {
-        return Identifier.of(MOD_ID, path);
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }
