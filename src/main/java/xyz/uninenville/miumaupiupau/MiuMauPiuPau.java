@@ -14,7 +14,7 @@ import net.minecraft.util.StringUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import xyz.uninenville.ducktape.api.config.ConfigHolder;
+import xyz.uninenville.ducktape.api.config.ConfigManager;
 import xyz.uninenville.miumaupiupau.config.Config;
 import xyz.uninenville.miumaupiupau.keymapping.MiuMauPiuPauKeyMapping;
 
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 public class MiuMauPiuPau implements ModInitializer {
     public static final String MOD_ID = "miumaupiupau";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static ConfigHolder CONFIG_HOLDER = new ConfigHolder(FabricLoader.getInstance().getConfigDir().resolve(MOD_ID + ".json"), new Config());
+    public static ConfigManager CONFIG_MANAGER = new ConfigManager(FabricLoader.getInstance().getConfigDir().resolve(MOD_ID + ".json"), new Config());
 
     private static String previousWord = "";
 
@@ -115,7 +115,7 @@ public class MiuMauPiuPau implements ModInitializer {
     }
 
     public static Config getConfig() {
-        return CONFIG_HOLDER.getConfig();
+        return CONFIG_MANAGER.getConfig();
     }
 
     public static Identifier id(String path) {

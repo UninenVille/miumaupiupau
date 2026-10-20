@@ -1,11 +1,11 @@
 package xyz.uninenville.miumaupiupau.keymapping;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.util.RandomSource;
-import org.lwjgl.glfw.GLFW;
 import xyz.uninenville.miumaupiupau.MiuMauPiuPau;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
 public class MiuMauPiuPauKeyMapping extends KeyMapping {
 
     public MiuMauPiuPauKeyMapping() {
-        super("key.miumaupiupau.miumaupiupau", GLFW.GLFW_KEY_UNKNOWN, KeyMapping.Category.register(MiuMauPiuPau.id(MiuMauPiuPau.MOD_ID)));
+        super("key.miumaupiupau.miumaupiupau", InputConstants.UNKNOWN.getValue(), KeyMapping.Category.register(MiuMauPiuPau.id(MiuMauPiuPau.MOD_ID)));
 
         ClientTickEvents.END_CLIENT_TICK.register(this::tick);
     }

@@ -77,7 +77,7 @@ public class YaclIntegration {
                 )
                 .build()
             )
-            .save(MiuMauPiuPau.CONFIG_HOLDER::saveConfig)
+            .save(MiuMauPiuPau.CONFIG_MANAGER::saveConfig)
             .build()
             .generateScreen(parent);
     }
